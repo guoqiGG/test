@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/ScrollTrigger.min.js"></script>
+    <title>ScrollTrigger|Gsap</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box; 
+          font-family: sans-serif; 
+        }
+        body{
+            min-height: 1000px;
+            overflow-x: hidden;
+        }
+        section{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px;
+        }
+        section .box{
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            max-width: 700px;
+            transform: translate(-50%,-50%);
+        }
+        section .box img{
+            max-width: 100%;
+            /* height: 100vh; */
+        }
+        
+        section .text{
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            font-size: 3em;
+            font-weight: 400;
+        }
+        section .text span{
+            color: #16b716;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h2 class="text">Scroll To See <span>Magic</span></h2>
+        <div class="box box1"><img src="img/phone.png" alt=""></div>
+        <div class="box box2"><img src="img/1.png" alt=""></div>
+        <div class="box box3"><img src="img/2.png" alt=""></div>
+        <div class="box box4"><img src="img/3.png" alt=""></div>
+        <div class="box box5"><img src="img/4.png" alt=""></div>
+    </section>
+</body>
+<script>
+    gsap.timeline({
+        scrollTrigger:{
+            trigger:"section",
+            start:"center center" ,
+            end:"bottom top",
+            scrub:true,
+            markers:false,
+            pin:true
+        }
+    })
+    .to(".text",{scale:0})
+    .from(".box1",{x:innerWidth*-1})
+    .from(".box2",{opacity:0})
+    .from(".box3",{x:innerWidth*1})
+    .from(".box4",{x:innerWidth*1})
+    .from(".box5",{x:innerWidth*1})
+</script>
+</html>
